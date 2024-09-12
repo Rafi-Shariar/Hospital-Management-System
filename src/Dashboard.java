@@ -1,9 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Dashboard extends JFrame {
+public class Dashboard extends JFrame implements ActionListener {
 
-    JButton loginButton, singupButton;
+    JButton loginButton, singupButton , adminbutton , doctorbutton;
 
 
     Dashboard(){
@@ -32,29 +34,50 @@ public class Dashboard extends JFrame {
         Font f1 = new Font("Dubai Medium" , Font.BOLD,17);
 
         loginButton = new JButton("Login");
-        loginButton.setBounds(1050,300,150,40);
+        loginButton.setBounds(200,300,150,40);
         loginButton.setFont(f1);
         loginButton.setBackground(Color.lightGray);
         loginButton.setForeground(Color.darkGray);
+        loginButton.addActionListener(this);
         add(loginButton);
 
         singupButton = new JButton("Register");
-        singupButton.setBounds(1050,370,150,40);
+        singupButton.setBounds(450,300,150,40);
         singupButton.setFont(f1);
         singupButton.setBackground(Color.lightGray);
         singupButton.setForeground(Color.darkGray);
+        singupButton.addActionListener(this);
         add(singupButton);
 
+        doctorbutton = new JButton("Doctor");
+        doctorbutton.setBounds(700,300,150,40);
+        doctorbutton.setFont(f1);
+        doctorbutton.setBackground(Color.lightGray);
+        doctorbutton.setForeground(Color.darkGray);
+        doctorbutton.addActionListener(this);
+        add(doctorbutton);
 
-        JLabel searchL = new JLabel("Search Doctor ");
-        searchL.setBounds(300,300,150,40);
-        searchL.setFont(new Font("Dubai Medium" , Font.BOLD,20));
-        add(searchL);
+        adminbutton = new JButton("Admin");
+        adminbutton.setBounds(950,300,150,40);
+        adminbutton.setFont(f1);
+        adminbutton.setBackground(Color.lightGray);
+        adminbutton.setForeground(Color.darkGray);
+        adminbutton.addActionListener(this);
+        add(adminbutton);
 
-        JTextField searchTF = new JTextField();
-        searchTF.setBounds(450,300,400,45);
-        searchTF.setFont(new Font("Bahnschrift", Font.CENTER_BASELINE,20));
-        add(searchTF);
+
+
+
+
+//        JLabel searchL = new JLabel("Search Doctor ");
+//        searchL.setBounds(300,300,150,40);
+//        searchL.setFont(new Font("Dubai Medium" , Font.BOLD,20));
+//        add(searchL);
+//
+//        JTextField searchTF = new JTextField();
+//        searchTF.setBounds(450,300,400,45);
+//        searchTF.setFont(new Font("Bahnschrift", Font.CENTER_BASELINE,20));
+//        add(searchTF);
 
         Font f2 = new Font("Copperplate Gothic Light" , Font.CENTER_BASELINE,13);
 
@@ -78,28 +101,28 @@ public class Dashboard extends JFrame {
         add(text_ourdoc);
 
 
-        ImageIcon i1 = new ImageIcon(this.getClass().getResource("/Images/Logo.png"));
+        ImageIcon i1 = new ImageIcon(this.getClass().getResource("/Images/Doc1.jpeg"));
         Image i2 = i1.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel i4 = new JLabel(i3);
         i4.setBounds(250,450,150,150);
         add(i4);
 
-        ImageIcon i5 = new ImageIcon(this.getClass().getResource("/Images/Logo.png"));
+        ImageIcon i5 = new ImageIcon(this.getClass().getResource("/Images/Doc2.jpeg"));
         Image i6 = i5.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH);
         ImageIcon i7 = new ImageIcon(i6);
         JLabel i8 = new JLabel(i7);
         i8.setBounds(450,450,150,150);
         add(i8);
 
-        ImageIcon i9 = new ImageIcon(this.getClass().getResource("/Images/Logo.png"));
+        ImageIcon i9 = new ImageIcon(this.getClass().getResource("/Images/Doc3.jpeg"));
         Image i10 = i9.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH);
         ImageIcon i11 = new ImageIcon(i10);
         JLabel i12 = new JLabel(i11);
         i12.setBounds(650,450,150,150);
         add(i12);
 
-        ImageIcon i13 = new ImageIcon(this.getClass().getResource("/Images/Logo.png"));
+        ImageIcon i13 = new ImageIcon(this.getClass().getResource("/Images/Doc4.jpeg"));
         Image i14 = i13.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH);
         ImageIcon i15 = new ImageIcon(i14);
         JLabel i16 = new JLabel(i15);
@@ -115,7 +138,35 @@ public class Dashboard extends JFrame {
 
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if( e.getSource() == singupButton){
+            setVisible(false);
+            new Register().setVisible(true);
+        }
+
+        if( e.getSource() == loginButton){
+            setVisible(false);
+            new Login().setVisible(true);
+        }
+
+        if( e.getSource() == doctorbutton){
+            setVisible(false);
+            new DoctorLogin();
+        }
+
+        if( e.getSource() == adminbutton){
+            setVisible(false);
+            new AdminLogin();
+        }
+
+    }
+
+
     public static void main(String[] args) {
         new Dashboard();
     }
+
+
 }
