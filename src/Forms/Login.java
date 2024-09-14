@@ -1,16 +1,22 @@
+package Forms;
+
+import Dashboards.PatientDashboard;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Login extends JFrame {
 
 
     protected  JTextField patientid;
     protected JPasswordField pass;
-    public JButton login,doctor;
-    public JLabel loginL;
+    protected JButton login,doctor;
+    protected JLabel loginL;
     protected JLabel patientID;
 
-    Login(){
+    public Login(){
         setLayout(null);
 
         Font f1 = new Font("Copperplate Gothic Bold" , Font.PLAIN , 22);

@@ -1,22 +1,36 @@
+package Forms;
+import Dashboards.AdminDashboard;
+import Dashboards.Conn;
 import com.toedter.calendar.JDateChooser;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class Register extends JFrame implements ActionListener {
 
     JButton register;
-    JTextField name , age , dob , nationality , contactnum, email, address ;
+    JTextField name , age , dob , password , contactnum, email, address ;
     Long patientID;
+    protected JLabel nameJ , patiendid , addressl , emaill , contactl ;
     JRadioButton male,female , marride , unmarride;
     ButtonGroup bg1 , bg2;
     JComboBox bloodgrp;
     String[] bldgrps = { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" };
     JDateChooser dateChooser;
-    Register(){
+    boolean calledFormAdmin , calledFormDic;
+    protected ImageIcon i1;
+
+    public Register(boolean calledFromAdmin){
+        this();
+        this.calledFormAdmin = calledFromAdmin;
+    }
+
+
+    public Register(){
         setLayout(null);
 
         JLabel Name = new JLabel("DAFFODIL WELLNESS HOSPITAL");
@@ -43,13 +57,13 @@ public class Register extends JFrame implements ActionListener {
 
         Random ran = new Random();
         patientID = Math.abs( (ran.nextLong()%10000000L) + 10000L);
-        JLabel patiendid = new JLabel("Patient ID : " + patientID);
+        patiendid = new JLabel("Patient ID : " + patientID);
         patiendid.setFont(f1);
         patiendid.setBounds(450,150,300,20);
         add(patiendid);
 
 
-        JLabel nameJ = new JLabel("Patient Name :");
+        nameJ = new JLabel("Patient Name :");
         nameJ.setFont(f1);
         nameJ.setBounds(185,200,300,20);
         add(nameJ);
@@ -132,14 +146,14 @@ public class Register extends JFrame implements ActionListener {
         add(bloodgrp);
 
 
-        JLabel nationalJ  = new JLabel("Nationality :");
-        nationalJ.setFont(f1);
-        nationalJ.setBounds(200,400,200,20);
-        add(nationalJ);
-        nationality = new JTextField();
-        nationality.setBounds(340,395,270,25);
-        nationality.setFont(f3);
-        add(nationality);
+        JLabel passwardJ  = new JLabel("Password :");
+        passwardJ.setFont(f1);
+        passwardJ.setBounds(200,400,200,20);
+        add(passwardJ);
+        password = new JTextField();
+        password.setBounds(340,395,270,25);
+        password.setFont(f3);
+        add(password);
 
         JLabel contact  = new JLabel("Contact :");
         contact.setFont(f1);
@@ -173,18 +187,18 @@ public class Register extends JFrame implements ActionListener {
 
         Font f2 = new Font("Copperplate Gothic Light" , Font.CENTER_BASELINE,13);
 
-        JLabel address = new JLabel("Address : Daffodil Smart City (DSC), Birulia, Savar, Dhaka-1216 ");
-        address.setBounds(350,640,700,40);
-        address.setFont(f2);
-        add(address);
-        JLabel email = new JLabel("Mail : info@daffodilwhospital.org");
-        email.setBounds(450,670,700,40);
-        email.setFont(f2);
-        add(email);
-        JLabel Contact = new JLabel("Tel: +8802224441833");
-        Contact.setBounds(480,700,700,40);
-        Contact.setFont(f2);
-        add(Contact);
+        addressl = new JLabel("Address : Daffodil Smart City (DSC), Birulia, Savar, Dhaka-1216 ");
+        addressl.setBounds(350,640,700,40);
+        addressl.setFont(f2);
+        add(addressl);
+        emaill = new JLabel("Mail : info@daffodilwhospital.org");
+        emaill.setBounds(450,670,700,40);
+        emaill.setFont(f2);
+        add(emaill);
+        contactl = new JLabel("Tel: +8802224441833");
+        contactl.setBounds(480,700,700,40);
+        contactl.setFont(f2);
+        add(contactl);
 
 
         register = new JButton("Register");
@@ -196,22 +210,99 @@ public class Register extends JFrame implements ActionListener {
 
         add(register);
 
+        JButton back = new JButton();
+
+
 
         setVisible(true);
         setBounds(400,100,1200,800);
         getContentPane().setBackground(Color.white);
-        setTitle("Registration");
+        setTitle("Patient Registration");
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        JOptionPane.showMessageDialog(null,"Successfully registered !");
+        String ID = String.valueOf(patientID);
+        String Name = name.getText() , NID = dob.getText() , Age = age.getText(), Password = password.getText(), Contact = contactnum.getText();
+        String Email = email.getText() , Address = address.getText();
+        Date dobDate = dateChooser.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String DOB = sdf.format(dobDate);
+        String MaritalStatus="";
+        if(marride.isSelected()) MaritalStatus = "Married";
+        else if (unmarride.isSelected()) MaritalStatus = "Unmarried";
+        String Gender="";
+        if(male.isSelected()) Gender = "Male";
+        else if (female.isSelected()) Gender = "Female";
+        String bloodGroup = (String) bloodgrp.getSelectedItem();
+        String Type = "Patient";
+
+
+
 
         if( e.getSource() == register){
-            setVisible(false);
-            new Login().setVisible(true);
+
+            if (Name.isEmpty() || NID.isEmpty() || Age.isEmpty() || !Age.matches("\\d+") || dobDate == null || Password.isEmpty() || Contact.isEmpty() || !Contact.matches("\\d{10,15}") || Email.isEmpty() || Address.isEmpty()) {
+                JOptionPane.showMessageDialog(null,"Fields Are Empty in the Form !");
+                return;
+            } else {
+
+                try {
+                    Conn conn = new Conn();
+                    String query = "INSERT INTO patient_list VALUES ('"
+                            + ID + "', '"
+                            + Name + "', '"
+                            + NID + "', '"
+                            + Age + "', '"
+                            + DOB + "', '"
+                            + MaritalStatus + "', '"
+                            + Gender + "', '"
+                            + bloodGroup + "', '"
+                            + Password + "', '"
+                            + Contact + "', '"
+                            + Email + "', '"
+                            + Address + "')";
+
+
+                    conn.s.executeUpdate(query);
+
+                    String query2 = "INSERT INTO LoginDetails VALUES ('"
+                            + ID + "', '"
+                            + Name + "', '"
+                            + Password + "', '"
+                            + Type + "')";
+
+                    conn.s.executeUpdate(query2);
+
+
+                }catch (Exception ee){
+                    System.out.println("DATA NOT INSERTED IN MYSQL");
+                    ee.printStackTrace();
+
+                }
+
+                JOptionPane.showMessageDialog(null,"Successfully registered !");
+                setVisible(false);
+
+                if( !calledFormAdmin){
+                    new PatientLogin().setVisible(true);
+                }
+                else{
+                    new AdminDashboard().setVisible(true);
+                }
+
+
+
+
+
+
+            }
+
+
+
+
         }
 
 
@@ -225,18 +316,4 @@ public class Register extends JFrame implements ActionListener {
 
 
 }
-/*
-Name
-male/female
-NID
-age
-DOB
-Gender
-Marital Status
-Blood Group
-Nationality
-Phone number
-Email
-Adress
-Emergency contact
-*/
+

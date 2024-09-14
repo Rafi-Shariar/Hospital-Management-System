@@ -4,13 +4,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+import Forms.EmployeeRegister;
+import Forms.Register;
+import Forms.DoctorRegister;
+
 public class AdminDashboard extends JFrame implements ActionListener {
 
     JButton adddoctor, addpatient , docotorappointment , doctorlist, patientlist, addemployee, employeelist;
 
     public AdminDashboard(){
         setLayout(null);
-
 
 
         JLabel Name = new JLabel("DAFFODIL WELLNESS HOSPITAL");
@@ -37,6 +41,7 @@ public class AdminDashboard extends JFrame implements ActionListener {
         adddoctor.setBounds(200,200,200,50);
         adddoctor.setBackground(Color.darkGray);
         adddoctor.setForeground(Color.white);
+        adddoctor.addActionListener(this);
         add(adddoctor);
 
 
@@ -60,6 +65,7 @@ public class AdminDashboard extends JFrame implements ActionListener {
         addemployee.setBounds(500,275,200,50);
         addemployee.setBackground(Color.darkGray);
         addemployee.setForeground(Color.white);
+        addemployee.addActionListener(this);
         add(addemployee);
 
         doctorlist = new JButton("Doctor List");
@@ -103,7 +109,17 @@ public class AdminDashboard extends JFrame implements ActionListener {
 
         if(e.getSource() == addpatient){
             setVisible(false);
+            new Register(true).setVisible(true);
 
+        }
+        else if(e.getSource() == adddoctor){
+            setVisible(false);
+            new DoctorRegister().setVisible(true);
+
+        }
+        else if(e.getSource() == addemployee){
+            setVisible(false);
+            new EmployeeRegister().setVisible(true);
         }
     }
 }

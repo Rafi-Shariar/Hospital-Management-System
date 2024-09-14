@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Forms.*;
+
 public class Dashboard extends JFrame implements ActionListener {
 
     JButton loginButton, singupButton , adminbutton , doctorbutton;
@@ -148,7 +150,7 @@ public class Dashboard extends JFrame implements ActionListener {
 
         if( e.getSource() == loginButton){
             setVisible(false);
-            new Login().setVisible(true);
+            new PatientLogin().setVisible(true);
         }
 
         if( e.getSource() == doctorbutton){

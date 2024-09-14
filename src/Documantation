@@ -1,0 +1,23 @@
+                   can improve in future :
+
+1. while adding a doctor , can add sections where to select doctor type like sergion , senior sergion , consultant
+
+
+
+    ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Back.jpg"));
+        Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        back.setIcon(scaledIcon);
+        back.setBounds(10, 700, 40, 40);
+        add(back);
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new Dashboard().setVisible(true);
+
+            }
+        });
+
+
+        (patientID, name, nid_bc_number, age, date_of_birth, marital_status, gender, blood_group, password, contact, email, address)
