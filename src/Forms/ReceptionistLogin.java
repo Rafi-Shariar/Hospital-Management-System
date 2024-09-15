@@ -1,16 +1,16 @@
 package Forms;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import Dashboards.AdminDashboard;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class AdminLogin extends Login implements ActionListener {
-
-    public AdminLogin(){
-        setTitle("Admin Login");
-        loginL.setText("Admin login");
+public class ReceptionistLogin extends Login implements ActionListener {
+    public ReceptionistLogin(){
+        setTitle("Receptionist Login");
+        loginL.setText("Receptionist Login");
+        loginL.setBounds(140,120,250,50);
         login.addActionListener(this);
 
     }
@@ -26,7 +26,7 @@ public class AdminLogin extends Login implements ActionListener {
 
             if(userid.equals("12345") && password.equals("12345")){
                 setVisible(false);
-                new AdminDashboard();
+
             }
             else {
                 JOptionPane.showMessageDialog(null,"Wrong User Name or Password !");
@@ -41,7 +41,7 @@ public class AdminLogin extends Login implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new AdminLogin();
+        new ReceptionistLogin();
     }
 
 

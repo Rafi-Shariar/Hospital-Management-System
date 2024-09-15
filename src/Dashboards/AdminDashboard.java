@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+import Dashboard_Functions.Admin.DoctorList;
+import Dashboard_Functions.Admin.EmployeeList;
+import Dashboard_Functions.Admin.PatientList;
 import Forms.EmployeeRegister;
 import Forms.Register;
 import Forms.DoctorRegister;
@@ -73,6 +76,7 @@ public class AdminDashboard extends JFrame implements ActionListener {
         doctorlist.setBounds(200,350,200,50);
         doctorlist.setBackground(Color.darkGray);
         doctorlist.setForeground(Color.white);
+        doctorlist.addActionListener(this);
         add(doctorlist);
 
         patientlist = new JButton("Patient List");
@@ -80,6 +84,7 @@ public class AdminDashboard extends JFrame implements ActionListener {
         patientlist.setBounds(500,350,200,50);
         patientlist.setBackground(Color.darkGray);
         patientlist.setForeground(Color.white);
+        patientlist.addActionListener(this);
         add(patientlist);
 
 
@@ -88,6 +93,7 @@ public class AdminDashboard extends JFrame implements ActionListener {
         employeelist.setBounds(200,425,200,50);
         employeelist.setBackground(Color.darkGray);
         employeelist.setForeground(Color.white);
+        employeelist.addActionListener(this);
         add(employeelist);
 
 
@@ -120,6 +126,20 @@ public class AdminDashboard extends JFrame implements ActionListener {
         else if(e.getSource() == addemployee){
             setVisible(false);
             new EmployeeRegister().setVisible(true);
+        }
+        else if (e.getSource() == doctorlist) {
+            setVisible(false);
+            new DoctorList().setVisible(true);
+
+        } else if (e.getSource() == patientlist) {
+            setVisible(false);
+            new PatientList().setVisible(true);
+        }
+        else if (e.getSource() == employeelist) {
+            setVisible(false);
+            new EmployeeList().setVisible(true);
+
+
         }
     }
 }

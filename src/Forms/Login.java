@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class Login extends JFrame {
 
 
-    protected  JTextField patientid;
+    protected  JTextField id;
     protected JPasswordField pass;
     protected JButton login,doctor;
     protected JLabel loginL;
@@ -45,10 +45,10 @@ public class Login extends JFrame {
         patientID.setFont(f1);
         patientID.setBounds(30, 200, 140 , 30);
         add(patientID);
-        patientid = new JTextField();
-        patientid.setFont(f3);
-        patientid.setBounds(180,200,250,30);
-        add(patientid);
+        id = new JTextField();
+        id.setFont(f3);
+        id.setBounds(180,200,250,30);
+        add(id);
 
 
 

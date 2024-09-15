@@ -21,3 +21,9 @@
 
 
         (patientID, name, nid_bc_number, age, date_of_birth, marital_status, gender, blood_group, password, contact, email, address)
+
+    ---------- Doctor Dashboard ------
+    1. add a box where taken appoinments will come from database and show in a table format
+    2. recieve doctors details(ID) while loging in to the dashboard to show
+    3. collect available days to show from database
+
