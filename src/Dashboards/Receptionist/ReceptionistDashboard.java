@@ -1,4 +1,7 @@
-package Dashboards;
+package Dashboards.Receptionist;
+
+import Dashboards.Admin.DoctorList;
+import Dashboards.AppointmentDashoard;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,9 +14,9 @@ public class ReceptionistDashboard extends JFrame implements ActionListener{
 
     Timer timer;
     JLabel dateTimeLabel;
-    JButton makeAppointmentButton , checkDoctor;
+    JButton makeAppointmentButton , checkDoctor , admitpatient , checkoutpatient;
 
-    ReceptionistDashboard(){
+    public ReceptionistDashboard(){
         setLayout(null);
 
         JLabel Name = new JLabel("DAFFODIL WELLNESS HOSPITAL");
@@ -61,13 +64,33 @@ public class ReceptionistDashboard extends JFrame implements ActionListener{
         checkDoctor.addActionListener(this);
         add(checkDoctor);
 
+        admitpatient = new JButton("Admit");
+        admitpatient.setBounds(100,450,250,50);
+        admitpatient.setFont(f1);
+        admitpatient.setBackground(Color.lightGray);
+        admitpatient.setForeground(Color.darkGray);
+        admitpatient.addActionListener(this);
+        add(admitpatient);
+
+        checkoutpatient = new JButton("Check Out");
+        checkoutpatient.setBounds(100,550,250,50);
+        checkoutpatient.setFont(f1);
+        checkoutpatient.setBackground(Color.lightGray);
+        checkoutpatient.setForeground(Color.darkGray);
+        checkoutpatient.addActionListener(this);
+        add(checkoutpatient);
+
+
+
+
+
+
 
 
 
         setVisible(true);
-        setBounds(380,100,500,700);
+        setBounds(380,100,500,900);
         setTitle("Receptionist Pannle");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.white);
 
     }
@@ -88,9 +111,17 @@ public class ReceptionistDashboard extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if( e.getSource() == makeAppointmentButton){
-
+            new SetAppoinment().setVisible(true);
         }
         else if (e.getSource() == checkDoctor) {
+            new CheckDoctors().setVisible(true);
+
+        } else if (e.getSource() == admitpatient) {
+            new Admit().setVisible(true);
+
+        } else if (e.getSource() == checkoutpatient) {
+            new CheckOut().setVisible(true);
+
 
         }
 

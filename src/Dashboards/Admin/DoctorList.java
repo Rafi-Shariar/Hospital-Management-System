@@ -1,8 +1,6 @@
-package Dashboard_Functions.Admin;
+package Dashboards.Admin;
 
-import Dashboards.AdminDashboard;
 import Dashboards.Conn;
-import com.mysql.cj.xdevapi.Table;
 import net.proteanit.sql.DbUtils;
 import javax.swing.*;
 import java.awt.*;
@@ -89,7 +87,7 @@ public class DoctorList extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == back){
-            setVisible(false);
+//            setVisible(false);
             new AdminDashboard().setVisible(true);
         }
         else if (e.getSource() == search) {

@@ -1,6 +1,6 @@
 package Forms;
 
-import Dashboards.AdminDashboard;
+import Dashboards.Admin.AdminDashboard;
 import Dashboards.Conn;
 import com.toedter.calendar.JDateChooser;
 
@@ -52,8 +52,8 @@ public class DoctorRegister extends Register{
 
         setTitle("Doctor Registration");
         doctorID = patientID;
-        nameJ.setText("Doctor Name: ");
-        patiendid.setText("Doctor ID: " + doctorID);
+        getNameJ().setText("Doctor Name: ");
+        getPatiendid().setText("Doctor ID: " + doctorID);
 
         JLabel depertment = new JLabel("Depertment : ");
         depertment.setFont(f1);

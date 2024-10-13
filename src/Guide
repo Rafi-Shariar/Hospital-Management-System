@@ -1,0 +1,43 @@
+         **** Rooms  ***
+catagory rooms by RoomNo , Type , Cost
+
+# room types :
+* General Ward ( 800 taka )
+2 ward at 2 and 3 floor, each have 50 bed. room no should be like "201-1 , 201-2"
+
+*Private Room ( 1800 taka )
+30 rooms
+
+* ICU (Intensive Care Unit) ( 8000 taka )
+30 rooms
+
+* CCU (Coronary Care Unit) ( 6300 taka )
+30 rooms
+
+* NICU (Neonatal Intensive Care Unit) ( 4800 taka )
+50 rooms
+
+* Deluxe/VIP Room ( 2500 taka )
+15 rooms
+
+* Maternity Ward ( 1200 taka )
+1 ward , has 50 beds
+
+* Burn Unit ( 2700 taka )
+1 ward , has 30 beds
+
+here i have describe room type , room rate , no of room / no of beds in a ward . you add room no as you want but make it understanable.
+
+i want to create a list of this rooms in my Room_List table.
+SO that i see what are the rooms here at the hospital.
+write required Mysql query so that i got the table as i want.
+Set "Stutas" as "Available" for all rooms.
+if you want any clarification , do let me know
+
+
+
+
+Room SQl table : Roomtype , RoomNo, Fees p/d , Stutas
+
+Admited patient List : patientID , PatientNAME , Roomtype , RoomNo , AdmitedFrom , Fees p/d , Stutas
+

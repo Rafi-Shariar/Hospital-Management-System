@@ -1,8 +1,7 @@
-package Dashboard_Functions.Admin;
+package Dashboards.Receptionist;
 
-import Dashboards.AdminDashboard;
+import Dashboards.Admin.AdminDashboard;
 import Dashboards.Conn;
-import com.mysql.cj.xdevapi.Table;
 import net.proteanit.sql.DbUtils;
 import javax.swing.*;
 import java.awt.*;
@@ -10,17 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
-public class EmployeeList extends JFrame implements ActionListener{
+public class CheckDoctors extends JFrame implements ActionListener{
 
     JButton back,search;
     JTextField name;
     JTable table;
     JScrollPane sp;
 
-    public EmployeeList(){
+    public CheckDoctors(){
         setLayout(null);
 
-        JLabel intro = new JLabel("Employee LIST");
+        JLabel intro = new JLabel("Available Doctors");
         intro.setFont(new Font("Eras Bold ITC" , Font.BOLD,50));
         intro.setBounds(300,10,500,80);
         add(intro);
@@ -30,12 +29,10 @@ public class EmployeeList extends JFrame implements ActionListener{
         sp = new JScrollPane(table);
         sp.setBounds(50, 200, 900, 400);
         table.setBackground(Color.WHITE);
-        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(sp);
         try{
             Conn c = new Conn();
-            String query = "SELECT * FROM employee_list";
+            String query = "SELECT doctorID, name, depertment, availabily, contact_number, email FROM doctor_list";
             ResultSet rs = c.s.executeQuery(query);
             table.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -43,15 +40,9 @@ public class EmployeeList extends JFrame implements ActionListener{
             e.printStackTrace();
         }
 
-        back = new JButton("<");
-        back.setBounds(10,610 , 50 , 30);
-        back.setBackground(Color.darkGray);
-        back.setForeground(Color.white);
-        back.addActionListener(this);
-        add(back);
 
-        JLabel namej = new JLabel("Employee ID : ");
-        namej.setBounds(120,130,200,30);
+        JLabel namej = new JLabel("Doctor ID : ");
+        namej.setBounds(130,130,200,30);
         namej.setFont(new Font("Dialog" ,Font.BOLD , 20 ));
         add(namej);
 
@@ -70,21 +61,16 @@ public class EmployeeList extends JFrame implements ActionListener{
 
 
 
-
-
-
-
-
         setVisible(true);
         setBounds(550,100,1000,700);
         getContentPane().setBackground(Color.white);
-        setTitle("Doctor List");
+        setTitle("Receptionist - Doctor List");
 
 
     }
 
     public static void main(String[] args) {
-        new EmployeeList();
+        new CheckDoctors();
     }
 
     @Override
@@ -98,7 +84,8 @@ public class EmployeeList extends JFrame implements ActionListener{
 
             try {
                 String ID = name.getText();
-                String query = "SELECT * FROM employee_list WHERE employeeID = '" + ID + "'";
+                String query = "SELECT doctorID, name, depertment, availabily, contact_number, email "
+                        + "FROM doctor_list WHERE doctorID = '" + ID + "'";
 
                 Conn c = new Conn();
                 ResultSet rs = c.s.executeQuery(query);
@@ -116,5 +103,3 @@ public class EmployeeList extends JFrame implements ActionListener{
 
     }
 }
-
-// ID , Name , Depertment , Availabily , contact , email ,salary ,

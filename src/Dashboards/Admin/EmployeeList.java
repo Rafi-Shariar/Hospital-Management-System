@@ -1,8 +1,6 @@
-package Dashboard_Functions.Admin;
+package Dashboards.Admin;
 
-import Dashboards.AdminDashboard;
 import Dashboards.Conn;
-import com.mysql.cj.xdevapi.Table;
 import net.proteanit.sql.DbUtils;
 import javax.swing.*;
 import java.awt.*;
@@ -10,17 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
-public class PatientList extends JFrame implements ActionListener{
+public class EmployeeList extends JFrame implements ActionListener{
 
     JButton back,search;
     JTextField name;
     JTable table;
     JScrollPane sp;
 
-    public PatientList(){
+    public EmployeeList(){
         setLayout(null);
 
-        JLabel intro = new JLabel("Patient LIST");
+        JLabel intro = new JLabel("Employee LIST");
         intro.setFont(new Font("Eras Bold ITC" , Font.BOLD,50));
         intro.setBounds(300,10,500,80);
         add(intro);
@@ -35,7 +33,7 @@ public class PatientList extends JFrame implements ActionListener{
         add(sp);
         try{
             Conn c = new Conn();
-            String query = "SELECT * FROM patient_list";
+            String query = "SELECT * FROM employee_list";
             ResultSet rs = c.s.executeQuery(query);
             table.setModel(DbUtils.resultSetToTableModel(rs));
 
@@ -50,8 +48,8 @@ public class PatientList extends JFrame implements ActionListener{
         back.addActionListener(this);
         add(back);
 
-        JLabel namej = new JLabel("Patient ID : ");
-        namej.setBounds(130,130,200,30);
+        JLabel namej = new JLabel("Employee ID : ");
+        namej.setBounds(120,130,200,30);
         namej.setFont(new Font("Dialog" ,Font.BOLD , 20 ));
         add(namej);
 
@@ -84,7 +82,7 @@ public class PatientList extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        new PatientList();
+        new EmployeeList();
     }
 
     @Override
@@ -98,7 +96,7 @@ public class PatientList extends JFrame implements ActionListener{
 
             try {
                 String ID = name.getText();
-                String query = "SELECT * FROM patient_list WHERE patientID = '" + ID + "'";
+                String query = "SELECT * FROM employee_list WHERE employeeID = '" + ID + "'";
 
                 Conn c = new Conn();
                 ResultSet rs = c.s.executeQuery(query);
@@ -107,9 +105,6 @@ public class PatientList extends JFrame implements ActionListener{
             catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
-
-
-
 
 
         }

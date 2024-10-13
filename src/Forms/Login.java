@@ -1,17 +1,13 @@
 package Forms;
 
-import Dashboards.PatientDashboard;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Login extends JFrame {
 
 
-    protected  JTextField id;
-    protected JPasswordField pass;
+    private   JTextField id;
+    private JPasswordField pass;
     protected JButton login,doctor;
     protected JLabel loginL;
     protected JLabel patientID;
@@ -92,8 +88,21 @@ public class Login extends JFrame {
         setTitle("Login");
     }
 
+    public void setId(JTextField id) {
+        this.id = id;
+    }
 
+    public JTextField getId() {
+        return id;
+    }
 
+    public void setPass(JPasswordField pass) {
+        this.pass = pass;
+    }
+
+    public JPasswordField getPass() {
+        return pass;
+    }
 
     public static void main(String[] args) {
         new Login();

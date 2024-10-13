@@ -1,6 +1,6 @@
 package Forms;
 
-import Dashboards.AdminDashboard;
+import Dashboards.Receptionist.ReceptionistDashboard;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,18 +20,19 @@ public class ReceptionistLogin extends Login implements ActionListener {
 
         if(e.getSource() == login){
 
-            String userid = id.getText();
-            char[] p = pass.getPassword();
+            String userid = getId().getText();
+            char[] p = getPass().getPassword();
             String password = new String(p);
 
             if(userid.equals("12345") && password.equals("12345")){
                 setVisible(false);
+                new ReceptionistDashboard().setVisible(true);
 
             }
             else {
                 JOptionPane.showMessageDialog(null,"Wrong User Name or Password !");
-                id.setText("");
-                pass.setText("");
+                getId().setText("");
+                getPass().setText("");
             }
 
 

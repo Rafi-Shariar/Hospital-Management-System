@@ -1,20 +1,17 @@
-package Dashboards;
+package Dashboards.Admin;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-import Dashboard_Functions.Admin.DoctorList;
-import Dashboard_Functions.Admin.EmployeeList;
-import Dashboard_Functions.Admin.PatientList;
 import Forms.EmployeeRegister;
 import Forms.Register;
 import Forms.DoctorRegister;
 
 public class AdminDashboard extends JFrame implements ActionListener {
 
-    JButton adddoctor, addpatient , docotorappointment , doctorlist, patientlist, addemployee, employeelist;
+    JButton adddoctor, addpatient , docotorappointment , doctorlist, patientlist, addemployee, employeelist , admitedPatients;
 
     public AdminDashboard(){
         setLayout(null);
@@ -87,6 +84,14 @@ public class AdminDashboard extends JFrame implements ActionListener {
         patientlist.addActionListener(this);
         add(patientlist);
 
+        admitedPatients = new JButton("Admited Patient");
+        admitedPatients.setFont(new Font("Dubai Medium" , Font.BOLD,22));
+        admitedPatients.setBounds(500,425,200,50);
+        admitedPatients.setBackground(Color.darkGray);
+        admitedPatients.setForeground(Color.white);
+        admitedPatients.addActionListener(this);
+        add(admitedPatients);
+
 
         employeelist = new JButton("Employee List");
         employeelist.setFont(f1);
@@ -100,7 +105,7 @@ public class AdminDashboard extends JFrame implements ActionListener {
         setVisible(true);
         setBounds(380,100,1000,700);
         setTitle("Admin Pannle");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.white);
 
     }
@@ -114,31 +119,31 @@ public class AdminDashboard extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == addpatient){
-            setVisible(false);
             new Register(true).setVisible(true);
 
         }
         else if(e.getSource() == adddoctor){
-            setVisible(false);
+
             new DoctorRegister().setVisible(true);
 
         }
         else if(e.getSource() == addemployee){
-            setVisible(false);
+
             new EmployeeRegister().setVisible(true);
         }
         else if (e.getSource() == doctorlist) {
-            setVisible(false);
+
             new DoctorList().setVisible(true);
 
         } else if (e.getSource() == patientlist) {
-            setVisible(false);
+
             new PatientList().setVisible(true);
         }
         else if (e.getSource() == employeelist) {
-            setVisible(false);
-            new EmployeeList().setVisible(true);
 
+            new EmployeeList().setVisible(true);
+        } else if (e.getSource() == admitedPatients) {
+            new AdmitedPatientList().setVisible(true);
 
         }
     }

@@ -5,12 +5,12 @@ import java.awt.event.ActionListener;
 
 import Forms.*;
 
-public class Dashboard extends JFrame implements ActionListener {
+public class MainDashboard extends JFrame implements ActionListener {
 
     JButton loginButton, appoinmentButton , adminbutton , doctorbutton , receiptionistbutton , aboutUsButton;
 
 
-    Dashboard(){
+    MainDashboard(){
         setLayout(null);
 
         ImageIcon background = new ImageIcon(this.getClass().getResource("/Images/Background.jpg"));
@@ -36,7 +36,7 @@ public class Dashboard extends JFrame implements ActionListener {
         Font f1 = new Font("Dubai Medium" , Font.BOLD,17);
 
         receiptionistbutton = new JButton("Receptionist");
-        receiptionistbutton.setBounds(50,300,150,40);
+        receiptionistbutton.setBounds(150,300,150,40);
         receiptionistbutton.setFont(f1);
         receiptionistbutton.setBackground(Color.lightGray);
         receiptionistbutton.setForeground(Color.darkGray);
@@ -44,7 +44,7 @@ public class Dashboard extends JFrame implements ActionListener {
         add(receiptionistbutton);
 
         loginButton = new JButton("Login");
-        loginButton.setBounds(250,300,150,40);
+        loginButton.setBounds(350,300,150,40);
         loginButton.setFont(f1);
         loginButton.setBackground(Color.lightGray);
         loginButton.setForeground(Color.darkGray);
@@ -52,7 +52,7 @@ public class Dashboard extends JFrame implements ActionListener {
         add(loginButton);
 
         appoinmentButton = new JButton("Appointment");
-        appoinmentButton.setBounds(450,300,150,40);
+        appoinmentButton.setBounds(550,300,150,40);
         appoinmentButton.setFont(f1);
         appoinmentButton.setBackground(Color.lightGray);
         appoinmentButton.setForeground(Color.darkGray);
@@ -60,7 +60,7 @@ public class Dashboard extends JFrame implements ActionListener {
         add(appoinmentButton);
 
         doctorbutton = new JButton("Doctor");
-        doctorbutton.setBounds(650,300,150,40);
+        doctorbutton.setBounds(750,300,150,40);
         doctorbutton.setFont(f1);
         doctorbutton.setBackground(Color.lightGray);
         doctorbutton.setForeground(Color.darkGray);
@@ -70,20 +70,12 @@ public class Dashboard extends JFrame implements ActionListener {
 
 
         adminbutton = new JButton("Admin");
-        adminbutton.setBounds(850,300,150,40);
+        adminbutton.setBounds(950,300,150,40);
         adminbutton.setFont(f1);
         adminbutton.setBackground(Color.lightGray);
         adminbutton.setForeground(Color.darkGray);
         adminbutton.addActionListener(this);
         add(adminbutton);
-
-        aboutUsButton = new JButton("About Us");
-        aboutUsButton.setBounds(1050,300,150,40);
-        aboutUsButton.setFont(f1);
-        aboutUsButton.setBackground(Color.lightGray);
-        aboutUsButton.setForeground(Color.darkGray);
-        aboutUsButton.addActionListener(this);
-        add(aboutUsButton);
 
 
 
@@ -139,9 +131,8 @@ public class Dashboard extends JFrame implements ActionListener {
 
 
         setVisible(true);
-        setBounds(280,30,1300,800);
+        setBounds(150,30,1300,800);
         setTitle("Daffodil wellness hospital");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Color.white);
 
     }
@@ -164,12 +155,10 @@ public class Dashboard extends JFrame implements ActionListener {
         }
 
         if( e.getSource() == doctorbutton){
-            setVisible(false);
             new DoctorLogin();
         }
 
         if( e.getSource() == adminbutton){
-            setVisible(false);
             new AdminLogin();
         }
 
@@ -178,7 +167,7 @@ public class Dashboard extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) {
-        new Dashboard();
+        new MainDashboard();
     }
 
 

@@ -1,11 +1,11 @@
-package Dashboard_Functions.Doctor;
+package Dashboards.Doctor;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class UpdateDoctorProfile extends JFrame {
+public class PatientList extends JFrame {
 
-    public UpdateDoctorProfile() {
+    public PatientList() {
         setLayout(null);
 
         setVisible(true);
@@ -17,6 +17,6 @@ public class UpdateDoctorProfile extends JFrame {
 
     }
     public static void main(String[] args) {
-        new UpdateDoctorProfile();
+        new PatientList();
     }
 }

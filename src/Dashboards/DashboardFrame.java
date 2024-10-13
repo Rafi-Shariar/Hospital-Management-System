@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class DashboardFrame extends JFrame {
 
-    JLabel intro;
+    protected JLabel intro;
 
     public DashboardFrame(){
         setLayout(null);

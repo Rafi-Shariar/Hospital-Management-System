@@ -1,5 +1,5 @@
 package Forms;
-import Dashboards.AdminDashboard;
+import Dashboards.Admin.AdminDashboard;
 import Dashboards.Conn;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.*;
@@ -15,7 +15,8 @@ public class Register extends JFrame implements ActionListener {
     JButton register;
     JTextField name , age , dob , password , contactnum, email, address ;
     Long patientID;
-    protected JLabel nameJ , patiendid , addressl , emaill , contactl ;
+    private JLabel nameJ , patiendid;
+    JLabel addressl , emaill , contactl ;
     JRadioButton male,female , marride , unmarride;
     ButtonGroup bg1 , bg2;
     JComboBox bloodgrp;
@@ -220,6 +221,25 @@ public class Register extends JFrame implements ActionListener {
         setTitle("Patient Registration");
 
     }
+
+
+
+    public void setNameJ(JLabel nameJ) {
+        this.nameJ = nameJ;
+    }
+    public JLabel getNameJ() {
+        return nameJ;
+    }
+
+    public void setPatiendid(JLabel patiendid) {
+        this.patiendid = patiendid;
+    }
+
+    public JLabel getPatiendid() {
+        return patiendid;
+    }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -2,7 +2,7 @@ package Forms;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Dashboards.AdminDashboard;
+import Dashboards.Admin.AdminDashboard;
 
 import javax.swing.*;
 
@@ -20,8 +20,8 @@ public class AdminLogin extends Login implements ActionListener {
 
         if(e.getSource() == login){
 
-            String userid = id.getText();
-            char[] p = pass.getPassword();
+            String userid = getId().getText();
+            char[] p = getPass().getPassword();
             String password = new String(p);
 
             if(userid.equals("12345") && password.equals("12345")){
@@ -30,8 +30,8 @@ public class AdminLogin extends Login implements ActionListener {
             }
             else {
                 JOptionPane.showMessageDialog(null,"Wrong User Name or Password !");
-                id.setText("");
-                pass.setText("");
+                getId().setText("");
+                getPass().setText("");
             }
 
 
