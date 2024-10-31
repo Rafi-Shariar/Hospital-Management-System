@@ -10,10 +10,12 @@ import Dashboards.Doctor.DoctorDashboard;
 import Dashboards.Patient.PatientDashboard;
 
 import javax.swing.*;
+import javax.swing.event.AncestorEvent;
+import javax.swing.event.AncestorListener;
 
 public class PatientLogin extends Login {
 
-    JButton registerbutton;
+    JButton registerbutton , forgotPassButton;
 
 
 
@@ -52,14 +54,34 @@ public class PatientLogin extends Login {
         });
 
 
+        forgotPassButton = new JButton("Forgot Password ?");
+        forgotPassButton.setBounds(110 , 430 , 250 , 40);
+        forgotPassButton.setFont(new Font("Eras Bold ITC" , Font.BOLD,20));
+        forgotPassButton.setBackground(Color.blue);
+        forgotPassButton.setForeground(Color.white);
+        add(forgotPassButton);
+        forgotPassButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+
+            }
+        });
+
+
+
+
+
+
+
         JLabel msg = new JLabel("DON'T HAVE AN ACCOUNT ?");
         msg.setFont(new Font("Dubai Medium" , Font.BOLD,18));
-        msg.setBounds(130 , 420 , 350 , 40);
+        msg.setBounds(130 , 500 , 350 , 40);
         msg.setForeground(Color.RED);
         add(msg);
 
         registerbutton = new JButton("Register");
-        registerbutton.setBounds(160 , 480 , 150 , 40);
+        registerbutton.setBounds(160 , 550 , 150 , 40);
         registerbutton.setFont(new Font("Eras Bold ITC" , Font.BOLD,20));
         registerbutton.setBackground(Color.darkGray);
         registerbutton.setForeground(Color.white);
@@ -81,4 +103,3 @@ public class PatientLogin extends Login {
 
 
 }
-

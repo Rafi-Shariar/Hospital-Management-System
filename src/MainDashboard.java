@@ -141,7 +141,6 @@ public class MainDashboard extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == receiptionistbutton){
-
             new ReceptionistLogin().setVisible(true);
 
         }

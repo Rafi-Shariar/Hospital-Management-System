@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HMS-DIU:jar">
+    <output-path>$PROJECT_DIR$/../../../OneDrive/Desktop</output-path>
+    <root id="archive" name="HMS-DIU.jar">
+      <element id="module-output" name="HMS-DIU" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java jar files/jcalendar-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java jar files/mysql-connector-java-8.0.28.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../Java jar files/rs2xml.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
