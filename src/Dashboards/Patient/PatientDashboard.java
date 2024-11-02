@@ -96,7 +96,7 @@ public class PatientDashboard extends DashboardFrame implements ActionListener {
         reports.setBounds(50,450 , 250,50);
         add(reports);
 
-        payments = new JButton("Payments");
+        payments = new JButton("Update Profile");
         payments.setBackground(Color.darkGray);
         payments.setForeground(Color.white);
         payments.setFont(f1);
@@ -141,6 +141,9 @@ public class PatientDashboard extends DashboardFrame implements ActionListener {
             new AppointmentDashoard().setVisible(true);
         } else if ( e.getSource() == reports) {
             new Reports(getpID).setVisible(true);
+
+        } else if (e.getSource() == payments) {
+            new UpdatePatientProfile(getpID).setVisible(true);
 
         }
 

@@ -33,7 +33,7 @@ public class PatientLogin extends Login {
                 try{
 
                     Conn c = new Conn();
-                    String query = "select * from logindetails WHERE ID = '" + ID + "' AND password = '" +password+"' ";
+                    String query = "select * from logindetails WHERE ID = '" + ID + "' AND password = '" +password+"' AND Type = 'Patient'";
 
                     ResultSet rs = c.s.executeQuery(query);
 
@@ -63,7 +63,7 @@ public class PatientLogin extends Login {
         forgotPassButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setVisible(false);
+                new ForgotPass().setVisible(true);
 
             }
         });

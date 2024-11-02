@@ -1,9 +1,14 @@
 package Forms;
 
+import Dashboards.Conn;
+import Dashboards.Patient.PatientDashboard;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+
 
 public class ForgotPass extends JFrame implements ActionListener {
 
@@ -56,8 +61,44 @@ public class ForgotPass extends JFrame implements ActionListener {
         apply.setFont(f1);
         apply.setBackground(Color.DARK_GRAY);
         apply.setForeground(Color.white);
-        apply.addActionListener(this);
         add(apply);
+        apply.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                String userid = ID.getText();
+                String nid = NID.getText();
+                String newPass = newpass.getText();
+
+                try{
+
+                    Conn c = new Conn();
+                    String query = "select * from patient_list WHERE patientID = '" + userid + "' AND nid_bc_number = '" +nid+"' ";
+
+                    ResultSet rs = c.s.executeQuery(query);
+
+                    if(rs.next()){
+
+                        String query2 = "UPDATE logindetails SET password = '"+newPass+"' WHERE ID = '"+userid+"' ";
+                        c.s.executeUpdate(query2);
+                        JOptionPane.showMessageDialog(null, "Password Changed Successfully !");
+
+
+                    }
+                    else JOptionPane.showMessageDialog(null,"Invalid Credentials");
+
+
+                }
+                catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
+
+            }
+        });
+
 
 
 
@@ -70,12 +111,14 @@ public class ForgotPass extends JFrame implements ActionListener {
         getContentPane().setBackground(Color.white);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
-    }
 
     public static void main(String[] args) {
         new ForgotPass();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+import Dashboards.AppointmentDashoard;
+import Dashboards.Receptionist.SetAppoinment;
 import Forms.EmployeeRegister;
 import Forms.Register;
 import Forms.DoctorRegister;
@@ -58,6 +60,7 @@ public class AdminDashboard extends JFrame implements ActionListener {
         docotorappointment.setBounds(200,275,200,50);
         docotorappointment.setBackground(Color.darkGray);
         docotorappointment.setForeground(Color.white);
+        docotorappointment.addActionListener(this);
         add(docotorappointment);
 
         addemployee = new JButton("Add Employee");
@@ -144,6 +147,9 @@ public class AdminDashboard extends JFrame implements ActionListener {
             new EmployeeList().setVisible(true);
         } else if (e.getSource() == admitedPatients) {
             new AdmitedPatientList().setVisible(true);
+
+        } else if (e.getSource()==docotorappointment) {
+            new SetAppoinment().setVisible(true);
 
         }
     }

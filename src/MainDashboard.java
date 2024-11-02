@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Dashboards.AppointmentDashoard;
 import Forms.*;
 
 public class MainDashboard extends JFrame implements ActionListener {
@@ -146,7 +147,7 @@ public class MainDashboard extends JFrame implements ActionListener {
         }
         if( e.getSource() == appoinmentButton){
 
-            new PatientLogin().setVisible(true);
+            new AppointmentDashoard().setVisible(true);
         }
 
         if( e.getSource() == loginButton){

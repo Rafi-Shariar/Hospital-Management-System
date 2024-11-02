@@ -1,4 +1,4 @@
-package Dashboards.Doctor;
+package Dashboards.Patient;
 
 import Dashboards.Conn;
 
@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UpdateDoctorProfile extends JFrame implements ActionListener {
+public class UpdatePatientProfile extends JFrame implements ActionListener {
 
     JTextField password , contactnum, address;
     JRadioButton marride,unmarride;
@@ -15,7 +15,7 @@ public class UpdateDoctorProfile extends JFrame implements ActionListener {
     JButton done;
     String ID = "";
 
-    public UpdateDoctorProfile(String docid) {
+    public UpdatePatientProfile(String docid) {
         setLayout(null);
         Font f1 = new Font("Copperplate Gothic Bold" , Font.PLAIN , 18);
         Font f3 = new Font("Dialog" ,Font.PLAIN , 18 );
@@ -96,56 +96,58 @@ public class UpdateDoctorProfile extends JFrame implements ActionListener {
     }
 
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == done){
 
             String newpass =password.getText() , newcontact =contactnum.getText() , newadress =address.getText();
-             String newmaritalstatus = "";
-             if( marride.isSelected()) newmaritalstatus = "Marride";
-             else if (unmarride.isSelected()) {
-                 newmaritalstatus = "Unmarride";
-             }
+            String newmaritalstatus = "";
+            if( marride.isSelected()) newmaritalstatus = "Marride";
+            else if (unmarride.isSelected()) {
+                newmaritalstatus = "Unmarride";
+            }
 
-             try{
-                 Conn c = new Conn();
+            try{
+                Conn c = new Conn();
 
-                 if(newpass.isEmpty()){}
-                 else {
-                     String query = "UPDATE doctor_list SET password = '"+newpass+"' WHERE doctorID = '"+ID+"';";
-                     c.s.executeUpdate(query);
+                if(newpass.isEmpty()){}
+                else {
+                    String query = "UPDATE patient_list SET password = '"+newpass+"' WHERE patientID = '"+ID+"';";
+                    c.s.executeUpdate(query);
 
-                     String query2 = "UPDATE logindetails SET password = '"+newpass+"' WHERE ID = '"+ID+"';";
-                     c.s.executeUpdate(query2);
-                 }
+                    String query2 = "UPDATE logindetails SET password = '"+newpass+"' WHERE ID = '"+ID+"';";
+                    c.s.executeUpdate(query2);
+                }
 
-                 if(newcontact.isEmpty()){}
-                 else{
-                     String query = "UPDATE doctor_list SET contact_number = '"+newcontact+"' WHERE doctorID = '"+ID+"';";
-                     c.s.executeUpdate(query);
+                if(newcontact.isEmpty()){}
+                else{
+                    String query = "UPDATE patient_list SET contact_number = '"+newcontact+"' WHERE patientID = '"+ID+"';";
+                    c.s.executeUpdate(query);
 
-                 }
+                }
 
-                 if(newmaritalstatus.isEmpty()){}
-                 else{
-                     String query = "UPDATE doctor_list SET marital_status = '"+newmaritalstatus+"' WHERE doctorID = '"+ID+"';";
-                     c.s.executeUpdate(query);
+                if(newmaritalstatus.isEmpty()){}
+                else{
+                    String query = "UPDATE patient_list SET marital_status = '"+newmaritalstatus+"' WHERE patientID = '"+ID+"';";
+                    c.s.executeUpdate(query);
 
-                 }
+                }
 
-                 if(newadress.isEmpty()){}
-                 else{
-                     String query = "UPDATE doctor_list SET address = '"+newadress+"' WHERE doctorID = '"+ID+"';";
-                     c.s.executeUpdate(query);
+                if(newadress.isEmpty()){}
+                else{
+                    String query = "UPDATE patient_list SET address = '"+newadress+"' WHERE patientID = '"+ID+"';";
+                    c.s.executeUpdate(query);
 
-                 }
+                }
 
-                 JOptionPane.showMessageDialog(null, "Profile Updated Successfully");
 
-             } catch (Exception ex) {
-                 throw new RuntimeException(ex);
-             }
+                JOptionPane.showMessageDialog(null, "Profile Updated Successfully");
+
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
 
 
 
